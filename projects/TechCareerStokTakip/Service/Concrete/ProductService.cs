@@ -10,11 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Concrete; 
+namespace Service.Concrete;
 
 internal class ProductService : IProductService
 {
-
     private readonly IProductRepository _productRepository;
 
     public ProductService(IProductRepository productRepository)
@@ -24,31 +23,29 @@ internal class ProductService : IProductService
 
     public Response<ProductResponseDto> Add(ProductAddRequest request)
     {
-       Product product = ProductAddRequest.ConvertToEntity(request);
-        _productRepository.Add(product);
-
-  var data = ProductResponseDto.ConvertToResponse(product);
-
+        Product product = ProductAddRequest.ConvertToEntity(request);
+        _productRepository.Add(product);    
+        var data = ProductResponseDto.ConvertToResponse(product);
         return new Response<ProductResponseDto>()
         {
             Data = data,
-            Message = "Ürün Eklendi",
+            Message = "Ürün Eklendi.",
             StatusCode = System.Net.HttpStatusCode.Created
         };
+            
     }
 
     public Response<ProductResponseDto> Delete(Guid id)
     {
         var product = _productRepository.GetById(id);
-
-
         _productRepository.Delete(product);
         var data = ProductResponseDto.ConvertToResponse(product);
         return new Response<ProductResponseDto>()
         {
             Data = data,
-            Message = "Ürün Silindi",
+            Message = "Ürün Silindi.",
             StatusCode = System.Net.HttpStatusCode.OK
+
 
         };
     }
@@ -56,32 +53,31 @@ internal class ProductService : IProductService
     public Response<List<ProductResponseDto>> GetAll()
     {
         var products = _productRepository.GetAll();
-        var response = products.Select(x=> ProductResponseDto.ConvertToResponse(x)).ToList();
-
+        var response = products.Select(x=>ProductResponseDto.ConvertToResponse(x)).ToList();
         return new Response<List<ProductResponseDto>>()
         {
             Data = response,
             StatusCode = System.Net.HttpStatusCode.OK
         };
-    }
 
+    }
     public Response<List<ProductResponseDto>> GetAllByPriceRange(decimal min, decimal max)
     {
         var products = _productRepository.GetAll(x => x.Price <= max && x.Price >= min);
         var response = products.Select(x => ProductResponseDto.ConvertToResponse(x)).ToList();
-
         return new Response<List<ProductResponseDto>>()
         {
             Data = response,
             StatusCode = System.Net.HttpStatusCode.OK
         };
-
     }
 
-    public Response<List<ProductResponseDto>> GetAllByPriveRange(decimal min, decimal max)
+    public Response<List<ProductDetailDto>> GetAllByCategoryId(int categoryId)
     {
         throw new NotImplementedException();
     }
+
+    
 
     public Response<List<ProductDetailDto>> GetAllDetails()
     {
@@ -90,21 +86,10 @@ internal class ProductService : IProductService
         {
             Data = details,
             StatusCode = System.Net.HttpStatusCode.OK
-
         };
     }
 
-    public Response<List<ProductDetailDto>> GetAllDetailsByCategoryId(int categoryId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Response<ProductResponseDto> GetByDetail(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Response<List<ProductDetailDto>> GetByDetailId(Guid id)
+    public Response<ProductDetailDto> GetByDetailId(Guid id)
     {
         throw new NotImplementedException();
     }

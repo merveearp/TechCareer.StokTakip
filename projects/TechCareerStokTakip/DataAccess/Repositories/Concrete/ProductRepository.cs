@@ -25,7 +25,8 @@ namespace DataAccess.Repositories.Concrete
                 p => p.CategoryId,
                 c => c.Id,
                 (product, category) => new ProductDetailDto
-                {
+                    
+                    {
                     Name= product.Name,
                     CategoryName= category.Name,
                     Id=product.Id,
@@ -63,6 +64,7 @@ namespace DataAccess.Repositories.Concrete
                p => p.CategoryId,
                c => c.Id,
                (p, c) => new ProductDetailDto
+
                {
                    CategoryName = c.Name,
                    Id = p.Id,
