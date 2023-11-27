@@ -74,10 +74,14 @@ internal class ProductService : IProductService
 
     public Response<List<ProductDetailDto>> GetAllByCategoryId(int categoryId)
     {
-        throw new NotImplementedException();
+        var details =_productRepository.GetDetailsByCategoryId(categoryId);
+        return new Response<List<ProductDetailDto>>()
+        {
+            Data = details,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
-
-    
+   
 
     public Response<List<ProductDetailDto>> GetAllDetails()
     {
@@ -85,22 +89,40 @@ internal class ProductService : IProductService
         return new Response<List<ProductDetailDto>>()
         {
             Data = details,
-            StatusCode = System.Net.HttpStatusCode.OK
+            StatusCode= System.Net.HttpStatusCode.OK
         };
     }
 
     public Response<ProductDetailDto> GetByDetailId(Guid id)
     {
-        throw new NotImplementedException();
+        var detail = _productRepository.GetProductDetail(id);
+        return new Response<ProductDetailDto>()
+        {
+            StatusCode = System.Net.HttpStatusCode.OK,
+            Data = detail,
+        };
     }
 
     public Response<ProductResponseDto> GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var product = _productRepository.GetById(id);
+        var response = ProductResponseDto.ConvertToResponse(product);
+        return new Response<ProductResponseDto>()
+        {
+            Data = response,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 
     public Response<ProductResponseDto> Update(ProductUpdateRequest request)
     {
-        throw new NotImplementedException();
+        Product product = ProductUpdateRequest.ConvertToEntity(request);
+        _productRepository.Update(product);
+        var response = ProductResponseDto.ConvertToResponse(product);
+        return new Response<ProductResponseDto>()
+        {
+            Data = response,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
     }
 }

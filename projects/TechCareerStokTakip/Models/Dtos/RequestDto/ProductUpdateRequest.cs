@@ -20,4 +20,9 @@ public record ProductUpdateRequest(Guid Id, string Name, int Stock, decimal Pric
 
         };
     }
+
+    public static Product ConvertToEntity(ProductUpdateRequest request)
+    {
+        throw new NotImplementedException();
+    }
 }
