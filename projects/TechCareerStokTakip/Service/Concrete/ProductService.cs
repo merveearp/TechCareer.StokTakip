@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Service.Concrete;
 
-internal class ProductService : IProductService
+public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
 
@@ -20,11 +20,13 @@ internal class ProductService : IProductService
     {
         _productRepository = productRepository;
     }
-
     public Response<ProductResponseDto> Add(ProductAddRequest request)
     {
         Product product = ProductAddRequest.ConvertToEntity(request);
-        _productRepository.Add(product);    
+
+        product.Id = new Guid();
+        _productRepository.Add(product);
+
         var data = ProductResponseDto.ConvertToResponse(product);
         return new Response<ProductResponseDto>()
         {
@@ -32,7 +34,7 @@ internal class ProductService : IProductService
             Message = "Ürün Eklendi.",
             StatusCode = System.Net.HttpStatusCode.Created
         };
-            
+
     }
 
     public Response<ProductResponseDto> Delete(Guid id)
@@ -53,7 +55,7 @@ internal class ProductService : IProductService
     public Response<List<ProductResponseDto>> GetAll()
     {
         var products = _productRepository.GetAll();
-        var response = products.Select(x=>ProductResponseDto.ConvertToResponse(x)).ToList();
+        var response = products.Select(x => ProductResponseDto.ConvertToResponse(x)).ToList();
         return new Response<List<ProductResponseDto>>()
         {
             Data = response,
@@ -72,16 +74,16 @@ internal class ProductService : IProductService
         };
     }
 
-    public Response<List<ProductDetailDto>> GetAllByCategoryId(int categoryId)
+    public Response<List<ProductDetailDto>> GetAllDetailsByCategoryId(int categoryId)
     {
-        var details =_productRepository.GetDetailsByCategoryId(categoryId);
+        var details = _productRepository.GetDetailsByCategoryId(categoryId);
         return new Response<List<ProductDetailDto>>()
         {
             Data = details,
             StatusCode = System.Net.HttpStatusCode.OK
         };
     }
-   
+
 
     public Response<List<ProductDetailDto>> GetAllDetails()
     {
@@ -89,17 +91,17 @@ internal class ProductService : IProductService
         return new Response<List<ProductDetailDto>>()
         {
             Data = details,
-            StatusCode= System.Net.HttpStatusCode.OK
+            StatusCode = System.Net.HttpStatusCode.OK
         };
     }
 
     public Response<ProductDetailDto> GetByDetailId(Guid id)
     {
-        var detail = _productRepository.GetProductDetail(id);
+        var details = _productRepository.GetProductDetail(id);
         return new Response<ProductDetailDto>()
         {
             StatusCode = System.Net.HttpStatusCode.OK,
-            Data = detail,
+            Data = details,
         };
     }
 

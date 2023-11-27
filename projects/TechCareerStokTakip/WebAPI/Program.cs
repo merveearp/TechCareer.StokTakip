@@ -3,6 +3,8 @@ using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Service.Abstract;
+using Service.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,12 +21,9 @@ builder.Services.AddDbContext<BaseDbContext>(
 
     ));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();    
-
-
-
-
-
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

@@ -21,8 +21,5 @@ public interface IProductService
 
     Response<ProductDetailDto> GetByDetailId(Guid id);
     Response<List<ProductDetailDto>> GetAllDetails();
-    Response<List<ProductDetailDto>>GetAllByCategoryId(int categoryId);
-
-
-  
+    Response<List<ProductDetailDto>>GetAllDetailsByCategoryId(int categoryId);
 }
