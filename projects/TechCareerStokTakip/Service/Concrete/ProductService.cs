@@ -73,6 +73,15 @@ public class ProductService : IProductService
             StatusCode = System.Net.HttpStatusCode.OK
         };
     }
+    public Response<List<ProductDetailDto>> GetAllDetails()
+    {
+        var details = _productRepository.GetAllProductDetails();
+        return new Response<List<ProductDetailDto>>()
+        {
+            Data = details,
+            StatusCode = System.Net.HttpStatusCode.OK
+        };
+    }
 
     public Response<List<ProductDetailDto>> GetAllDetailsByCategoryId(int categoryId)
     {
@@ -85,23 +94,15 @@ public class ProductService : IProductService
     }
 
 
-    public Response<List<ProductDetailDto>> GetAllDetails()
-    {
-        var details = _productRepository.GetAllProductDetails();
-        return new Response<List<ProductDetailDto>>()
-        {
-            Data = details,
-            StatusCode = System.Net.HttpStatusCode.OK
-        };
-    }
+  
 
     public Response<ProductDetailDto> GetByDetailId(Guid id)
     {
-        var details = _productRepository.GetProductDetail(id);
+        var detail = _productRepository.GetProductDetail(id);
         return new Response<ProductDetailDto>()
         {
             StatusCode = System.Net.HttpStatusCode.OK,
-            Data = details,
+            Data = detail,
         };
     }
 

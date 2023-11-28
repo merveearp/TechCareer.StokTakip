@@ -20,6 +20,7 @@ builder.Services.AddDbContext<BaseDbContext>(
     opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")
 
     ));
+
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();

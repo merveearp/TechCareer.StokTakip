@@ -15,11 +15,13 @@ public interface IProductService
     Response<ProductResponseDto> Update(ProductUpdateRequest request);
     Response<ProductResponseDto> Delete(Guid id);
     Response<ProductResponseDto> GetById(Guid id);
+
     Response<List<ProductResponseDto>> GetAll();
-    Response<List<ProductResponseDto>>GetAllByPriceRange(decimal min, decimal max);
+    Response<List<ProductResponseDto>> GetAllByPriceRange(decimal min, decimal max);
 
 
     Response<ProductDetailDto> GetByDetailId(Guid id);
+
     Response<List<ProductDetailDto>> GetAllDetails();
-    Response<List<ProductDetailDto>>GetAllDetailsByCategoryId(int categoryId);
+    Response<List<ProductDetailDto>> GetAllDetailsByCategoryId(int categoryId);
 }

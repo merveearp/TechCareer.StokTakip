@@ -49,7 +49,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("geybyid")]
-    public IActionResult GetByID([FromQuery] Guid id)
+    public IActionResult GetById([FromQuery] Guid id)
     {
         var result = _productService.GetById(id);
         if (result.StatusCode == System.Net.HttpStatusCode.OK)
@@ -103,7 +103,7 @@ public class ProductsController : ControllerBase
         return BadRequest(result);
     }
     [HttpGet("getallbycategory")]
-    public IActionResult GetAllByCategoryId([FromQuery] int categoryId)
+    public IActionResult GetAllDetailsByCategoryId([FromQuery] int categoryId)
     {
         var result = _productService.GetAllDetailsByCategoryId(categoryId);
         if (result.StatusCode == System.Net.HttpStatusCode.OK)

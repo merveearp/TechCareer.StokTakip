@@ -16,7 +16,7 @@ public class CategoriesController : ControllerBase
         _categoryService = categoryService;
     }
 
-    [HttpGet("add")]
+    [HttpPost("add")]
     public IActionResult Add([FromBody]CategoryAddRequest categoryAddRequest)
     {
         var result = _categoryService.Add(categoryAddRequest);
@@ -39,7 +39,7 @@ public class CategoriesController : ControllerBase
         return BadRequest(result);
     }
     [HttpDelete]
-    public IActionResult Delete([FromQuery]int id)
+    public IActionResult Delete([FromQuery] int id)
     {
         var result = _categoryService.Delete(id);
         if (result.StatusCode == System.Net.HttpStatusCode.OK)

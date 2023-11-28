@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "projects\TechCare
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistance", "corePackages\Core.Persistance\Core.Persistance.csproj", "{29D6CB90-1882-4283-AADD-A1B6EE2F771A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Shared", "corePackages\Core.Shared\Core.Shared.csproj", "{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared", "corePackages\Core.Shared\Core.Shared.csproj", "{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

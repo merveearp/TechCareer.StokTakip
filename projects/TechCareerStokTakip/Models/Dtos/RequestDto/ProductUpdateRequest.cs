@@ -5,24 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Dtos.RequestDto;
-public record ProductUpdateRequest(Guid Id, string Name, int Stock, decimal Price, int CategoryId)
+namespace Models.Dtos.RequestDto
 {
-    public static Product ConvertToEntity(ProductAddRequest request)
+    public record ProductUpdateRequest(Guid Id, string Name, int Stock, decimal Price, int CategoryId)
     {
-        return new Product
+        public static Product ConvertToEntity(ProductUpdateRequest request)
         {
-            Id = request.Id,
-            Name = request.Name,
-            Stock = request.Stock,
-            Price = request.Price,
-            CategoryId = request.CategoryId
+            return new Product
+            {
+                Id = request.Id,
+                Name = request.Name,
+                Stock = request.Stock,
+                Price = request.Price,
+                CategoryId = request.CategoryId
 
-        };
-    }
-
-    public static Product ConvertToEntity(ProductUpdateRequest request)
-    {
-        throw new NotImplementedException();
+            };
+        }
     }
 }

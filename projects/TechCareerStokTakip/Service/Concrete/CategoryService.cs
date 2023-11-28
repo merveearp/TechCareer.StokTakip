@@ -52,7 +52,7 @@ public class CategoryService : ICategoryService
     {
         List<Category> categories = _categoryRepository.GetAll();
         List<CategoryResponseDto> response = categories.Select(x=>(CategoryResponseDto)x).ToList();
-        return new Response<List<CategoryResponseDto>>()
+        return new Response<List<CategoryResponseDto>>
         {
             Data = response,
             StatusCode = System.Net.HttpStatusCode.OK
@@ -61,9 +61,9 @@ public class CategoryService : ICategoryService
 
     public Response<CategoryResponseDto> GetById(int id)
     {
-        Category?category = _categoryRepository.GetById(id);
+        Category? category = _categoryRepository.GetById(id);
         CategoryResponseDto response = category;
-        return new Response<CategoryResponseDto>()
+        return new Response<CategoryResponseDto>
         {
             Data= response,
             StatusCode =System.Net.HttpStatusCode.OK
