@@ -1,8 +1,10 @@
+using DataAccess;
 using DataAccess.Context;
 using DataAccess.Repositories.Abstract;
 using DataAccess.Repositories.Concrete;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Service;
 using Service.Abstract;
 using Service.Concrete;
 
@@ -15,16 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDataAccessDependencies(builder.Configuration);
+builder.Services.AddServiceDependencies();
 
-builder.Services.AddDbContext<BaseDbContext>(
-    opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")
 
-    ));
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

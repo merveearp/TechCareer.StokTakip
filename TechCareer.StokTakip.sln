@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistance", "corePac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Shared", "corePackages\Core.Shared\Core.Shared.csproj", "{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCutingConcerns", "corePackages\Core.CrossCutingConcerns\Core.CrossCutingConcerns.csproj", "{4F4838D1-3F19-4328-90C5-1363B4100147}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4838D1-3F19-4328-90C5-1363B4100147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4838D1-3F19-4328-90C5-1363B4100147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4838D1-3F19-4328-90C5-1363B4100147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4838D1-3F19-4328-90C5-1363B4100147}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{48E8BADE-E2F7-4854-8F06-A79EFAFE8F22} = {E681F310-2FE1-41AB-94D9-B015D0D7FE11}
 		{29D6CB90-1882-4283-AADD-A1B6EE2F771A} = {C59933E6-8EB3-4BA5-95EC-8649BBE85048}
 		{25CA0DC9-0AE1-4F4D-9F3A-C8904D602644} = {C59933E6-8EB3-4BA5-95EC-8649BBE85048}
+		{4F4838D1-3F19-4328-90C5-1363B4100147} = {C59933E6-8EB3-4BA5-95EC-8649BBE85048}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1835E6E-7786-4340-BD25-0DF37C4C2548}
