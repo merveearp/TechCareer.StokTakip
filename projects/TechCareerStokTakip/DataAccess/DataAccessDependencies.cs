@@ -14,7 +14,7 @@ namespace DataAccess;
 
 public static class DataAccessDependencies
 {
-    public static   IServiceCollection AddDataAccessDependencies(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDataAccessDependencies(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();

@@ -5,7 +5,7 @@ using Models.Dtos.RequestDto;
 using Models.Dtos.ResponseDto;
 using Models.Entities;
 using Service.Abstract;
-using Service.BusinessRules;
+using Service.BusinessRules.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +18,9 @@ public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
 
-    private readonly ProductRules _rules;
+    private readonly IProductRules _rules;
 
-    public ProductService(IProductRepository productRepository, ProductRules rules)
+    public ProductService(IProductRepository productRepository, IProductRules rules)
     {
         _productRepository = productRepository;
         _rules = rules;
@@ -173,8 +173,8 @@ public class ProductService : IProductService
         {
             return new Response<ProductResponseDto>()
             {
-Message = ex.Message,
-StatusCode=System.Net.HttpStatusCode.BadRequest
+            Message = ex.Message,
+            StatusCode=System.Net.HttpStatusCode.BadRequest
 
 
             };
